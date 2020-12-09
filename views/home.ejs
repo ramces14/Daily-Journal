@@ -1,0 +1,24 @@
+<%- include("partials/header") -%> 
+
+<% function truncate(e) { %>
+<%    if (e.length > 100) { %>
+<%       return (e.substring(0, 100) + "..."); %>
+<%    } else { %>
+<%         return e; %>
+<%    } %>
+<% } %> 
+
+<h1>Home</h1>
+<p><%= homeContent %></p>
+
+<% post.forEach(post => { %>
+   <h1> <%= post.title %> </h1>
+   <p> 
+      <%= truncate(post.content) %> 
+      <a href="/posts/<%= post.title %>">Read More</a>
+   </p>
+<% }); %>
+
+<a class="btn btn-primary addJournal" href="/compose"> Add Journal </a>
+   
+<%- include("partials/footer") -%> 
